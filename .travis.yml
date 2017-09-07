@@ -7,7 +7,6 @@ deploy:
   provider: rubygems
   api_key:
     secure: Ph/cami6frj/9J7mmqLYdjPQ74iYltbt4JpuBmgCkeEvTUZ8171zrF17T6b+kUnVG19g2MB/KRnfvm+7KqvyeaqfUG21bcnHmkK8tqoTHIZaffuYOwFxLP+GeQ2REwZ3sscmWg+CTp7tl/kL9Z8O8YQOprzRy2V3jTLNabUafxFC5j5+GSFPcvjH8edF7Z47EJ76sAiuRUJY1wuVRyQontuBpLhD1YecQngUaNkw3zL1Gjrq/HTIA7NNRG9IKB0ByNFur0+QvJuHO/8ur3pbTfvhceldhudVoofZXHvJjP29U8x/wqu31yYBcPFItQoEvi74G0dpffhHnC2joo9NdsSAT3FxgLuMLbhYDf/zyO/e6jFdA42OUKPMgc4SS01hcGgim1O/MeL/z/w4YRqgrs0isPHBp+ubfsOZWVhhDAjVoaNZvFskDaDW+d0fykPnGuDCOLdXHc0i3JoEMQq4SR2pR02qh8FlZVFE4ohnlssvDnPpfAuGtNAaFPJpLY9ZOFx+JNVqigfX7p+wSFGDf4rzDq4NuTi14Qijd/Hd1zaQRO8EdKcCWBx3Koht0emAN0w3oh3KALnby0c/PG+ypYVNkVO2OU42VQqMWsIFDqH+4B+AsQNSMYa9P7gCw4LDtisGaLq40KRwf3dervexEIIMgbz3G3piuOQwxUBOVVw=
-  gem: jumunge
   on:
     tags: true
     repo: miyucy/jumunge
