@@ -100,12 +100,44 @@ module Jumunge
     end
   end
 
+  class JuOpt
+    def initialize(object, trail, trails)
+      @object = object
+      @trail  = trail
+      @trails = trails
+    end
+
+    def perform
+      if @object.key? key_name
+        @object[key_name] = deep_applied_value
+        @object
+      else
+        @object
+      end
+    end
+
+    private
+
+    def key_name
+      @key_name ||= @trail[0..-2]
+    end
+
+    def deep_applied_value
+      Jumunge.new(@object[key_name], remaining_trails).perform
+    end
+
+    def remaining_trails
+      @remaining_trails ||= @trails.join('.')
+    end
+  end
+
   class Jumunge
     def initialize(object, path)
       @object = object
       @trail, *@trails = path.split '.'
       @is_array = @trail[-2..-1] == '[]'
       @is_value = @trail[-1] == '!'
+      @is_opt = @trail[-1] == '?'
       @performer = performer_class.new @object, @trail, @trails
     end
 
@@ -121,6 +153,8 @@ module Jumunge
           JuArray
         elsif @is_value
           JuValue
+        elsif @is_opt
+          JuOpt
         else
           JuOther
         end
@@ -129,7 +163,7 @@ module Jumunge
       end
     end
   end
-  private_constant :Jumunge, :JuArray, :JuValue, :JuOther, :JuThru
+  private_constant :Jumunge, :JuArray, :JuValue, :JuOther, :JuThru, :JuOpt
 
   def jumunge(object, *paths)
     paths.inject(object) do |result, path|
