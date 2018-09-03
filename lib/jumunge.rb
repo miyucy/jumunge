@@ -1,6 +1,12 @@
 require "jumunge/version"
 
 module Jumunge
+  module Utils
+    def remaining_trails
+      @remaining_trails ||= @trails.join('.')
+    end
+  end
+
   class JuValue
     def initialize(object, trail, trails)
       @object = object
@@ -53,9 +59,7 @@ module Jumunge
       end
     end
 
-    def remaining_trails
-      @remaining_trails ||= @trails.join('.')
-    end
+    include Utils
   end
 
   class JuOther
@@ -85,9 +89,7 @@ module Jumunge
       Jumunge.new(@object[key_name], remaining_trails).perform
     end
 
-    def remaining_trails
-      @remaining_trails ||= @trails.join('.')
-    end
+    include Utils
   end
 
   class JuThru
@@ -109,7 +111,7 @@ module Jumunge
 
     def perform
       if @object.key? key_name
-        @object[key_name] = deep_applied_value
+        @object[key_name] = deep_applied_value if @trails.size.positive?
         @object
       else
         @object
@@ -126,9 +128,7 @@ module Jumunge
       Jumunge.new(@object[key_name], remaining_trails).perform
     end
 
-    def remaining_trails
-      @remaining_trails ||= @trails.join('.')
-    end
+    include Utils
   end
 
   class Jumunge
