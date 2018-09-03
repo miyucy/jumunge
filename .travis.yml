@@ -1,12 +1,17 @@
-sudo: false
 language: ruby
+sudo: false
+cache:
+  bundler: true
 rvm:
-  - 2.4.1
-before_install: gem install bundler -v 1.15.4
+  - 2.4
+  - 2.5
+before_install:
+  - gem install bundler
 deploy:
   provider: rubygems
   api_key:
     secure: YgPD3zs9Am0R1w7xOYlLrI7ls8v1nuOQpC+R+4GyULeDYMIJg9kHe59n3CuiUmaVs3bQZTlW921sluY6+GPQrZdOf5fF0wGluF7X71DtZYEabic611QI1y4hgrFrHX7JFerqjoDATUMIkN+MAk3m+Ok7czs9PSL89CltNznJcV3PXVFyPHrWZE9+XY8Bl2hh8N3PHdcVKDiT1JK1d3qLoiklW32bOvD0Vt5VPnThps+hDRY+Gm4sfNDextd1LqptXdAGrrd1y+agQD+9GDf6m9Ypo2LofpY0J29nZ93eV04bP5zC2gVWCwwmPANLX7LcUboDt309j5ytbwQT9zAd4ms/mIH+8Jf6taOvugmGDJOzCBSXyDl4sj9gLAeHkrYFv5l/cka0bvBAHiyBNOEJAUyrmc7ZKGAIYJiwCZQ4cExyiQE3ywPMC7z2FhR5OOMpJyXawbgdMkLma1fIWnBUdPBudKYt0yni5+BVlWyDymoduWQxYllkVrLyAfdOLzjUGWF6oXZMTsqQTJ2s34pitrMeXa5Q4RUIN/2A1Yav0pQQ3yP0vODMzLxi3rCj9NM7XX2KC3H+EEfc9zLPOIMSnlnnu7SlX9+65HJQMgFAm/u3zRHSF3FdBX2ZtwmEZbjwhqhdkKWlW4SA70TLoYDyeNqshRlgoJ663jox38iL92Y=
+  gem: jumunge
   on:
     tags: true
     repo: miyucy/jumunge
